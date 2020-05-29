@@ -1,0 +1,41 @@
+<head>
+    <link rel="import" href="www.waajacu.com/com/index.html">
+    <style>        
+        body {
+            background-color: #000000;
+            color: #A9A9A9;
+            font-family: 'OCR A Std', monospace;
+            font-size: 12px;
+        }
+        article {
+            background-color: #000000;
+            color: rgb(211, 170, 96);
+            font-family: 'OCR A Std', monospace;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        var doc = document.querySelector('link[rel="import"]').import;
+    </script>
+</head>
+<body>
+    <body>
+        <script type="text/javascript">
+            var clicks = 0;
+            function highClick() {
+                clicks += 1;
+                document.getElementById("clicks").innerHTML = clicks;
+            };
+            function lowClick() {
+                clicks -= 1;
+                document.getElementById("clicks").innerHTML = clicks;
+            };
+        </script>
+        <article>
+            Waajacu commerce is a buissness.
+        </article>
+        <button type="button" onClick="highClick()">wish luck</button>
+        <button type="button" onClick="lowClick()">decline</button>
+        <p>lUCKS: <a id="clicks">0</a></p>
+    </body>.
+</body> 
