@@ -29,10 +29,10 @@
         }
     </script>
     <script type="text/javascript">
-        var configfile = 'http://www.waajacu.com/config/';
+        var configfolder = 'config/';
         getPageContents(function(result) {
             const homeurl = result.split('\n')[0];
-        }, configfile + 'homeurl.txt', null)
+        }, configfolder + 'homeurl.txt', null)
     </script>
     <script type="text/javascript">
         function reportLucks(){ // This communicates back to home to report lucks count.
