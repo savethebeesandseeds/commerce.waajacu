@@ -51,9 +51,10 @@
                 return el != '';
             });
             homeurl = homeurl[0];
+            console.log(`fetch homeurl ::: ${homeurl}`);
         }, homeurlfile, null)
         function onreadyFun () {
-            console.log(`waka ready`);
+            console.log(`waka ready, with homeurl ::: ${homeurl}`);
         }
         window.onload = onreadyFun();
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
