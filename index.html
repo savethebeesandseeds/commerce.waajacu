@@ -15,30 +15,55 @@
             font-family: 'OCR A Std', monospace;
             font-size: 12px;
         }
+        .light {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .gray {
+            background-color: #000000;
+            color: #A9A9A9;
+        }
+        .gold {
+            background-color: #000000;
+            color: #d3aa60;
+        }
     </style>
-    <script type="text/javascript">
+    <script type='text/javascript'>
         function getPageContents(callback,url,params) {
-            http = new XMLHttpRequest();
+            console.log(`getPageContents url ::: ${url}`);
+            let http = new XMLHttpRequest();
             if(params!=null) {
                 http.open('POST', url, true);
                 http.setRequestHeader('Content-type', 'application/');
             } else {
                 http.open('GET', url, true);
             }
+            http.onreadystatechange = function() {
+                callback(http.responseText);    
+            }
             http.send(params);
         }
-    </script>
-    <script type="text/javascript">
-        var configfolder = 'config/';
+        var homeurlfile = './scr/homeurl.txt';
+        var homeurl = []
         getPageContents(function(result) {
-            const homeurl = result.split('\n')[0];
-        }, configfolder + 'homeurl.txt', null)
-    </script>
+            homeurl = result.split('\n');
+            homeurl  = homeurl.filter(function (el) {
+                return el != '';
+            });
+            homeurl = homeurl[0];
+        }, homeurlfile, null)
+        function onreadyFun () {
+            console.log(`waka ready`);
+        }
+        window.onload = onreadyFun();
+    </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type="text/javascript">
-        function reportLucks(){ // This communicates back to home to report lucks count.
+       function reportLucks(){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
-            var body = {'lucks': {'poetry': 0, 'commerce': clicks, 'waajacu': 0}};
-            http.open('POST', homeurl + 'lucks', true);
+            var lucksurl = homeurl + 'lucks';
+            var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
+            console.log(`homeurl ::: ${lucksurl}`);
+            http.open('POST', lucksurl, true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
             return null;
