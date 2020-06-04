@@ -46,13 +46,14 @@
         var homeurlfile = './scr/homeurl.txt';
         var homeurl = []
         getPageContents(function(result) {
+            console.log(`fetch result ::: ${result}`);
             homeurl = result.split('\n');
-            homeurl  = homeurl.filter(function (el) {
+            homeurl = homeurl.filter(function (el) {
                 return el != '';
             });
             homeurl = homeurl[0];
             console.log(`fetch homeurl ::: ${homeurl}`);
-        }, homeurlfile, null)
+        }, homeurlfile, null);
         function onreadyFun () {
             console.log(`waka ready, with homeurl ::: ${homeurl}`);
         }
